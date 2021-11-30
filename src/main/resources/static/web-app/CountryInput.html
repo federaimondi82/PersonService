@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title th:text=${title}></title>
+</head>
+<body>
+	<form action="http://localhost:5051/personservice/country/storeView" method="POST">
+	         <label for="ID">ID: </label>
+	  		 <input type="text" id="ID" name="ID"><br><br>
+	         <label for="name">name: </label>
+	  		 <input type="text" id="name" name="name"><br><br>
+	         <label for="personID">personID: </label>
+	  		 <input type="text" id="personID" name="personID"><br><br>
+	         <label for="stateID">stateID: </label>
+	  		 <input type="text" id="stateID" name="stateID"><br><br>
+	  <input type="submit" value="Save">
+	</form>
+</body>
+</html>

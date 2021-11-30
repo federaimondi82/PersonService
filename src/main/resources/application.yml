@@ -1,0 +1,76 @@
+server:
+  port: 5051
+
+spring:
+  application:
+    name: PersonService
+
+---
+
+spring:
+  thymeleaf:
+    prefix: classpath:/static/web-app/
+    suffix: .html
+    mode: HTML5
+    encoding: UTF-8
+    cache: true
+
+---
+
+spring:
+  jpa:
+    hibernate.ddl-auto: update
+    generate-ddl: true
+    show-sql: true
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/personservicedb?useLegacyDatetimeCode=false&serverTimezone=UTC
+    username: admin
+    password: sDFp!d2018
+
+---
+# Feign
+feign:
+  compression:
+    request:
+      enabled: true
+    response:
+      enabled: true
+  httpclient:
+    connection-timeout: 3000
+  client:
+    config:
+      default:
+        connectTimeout: 300000 #5 MINUTI
+        readTimeout: 300000
+        
+---
+# Eureka  
+eureka:
+   client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+     defaultZone: ${EUREKA_URL:http://localhost:5100/eureka/}
+
+---
+#Actuator Parameters
+management:
+  endpoint:
+    health:
+      show-details: WHEN_AUTHORIZED
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,refresh,bus-refresh
+
+# Logs Parameters
+logging:
+  file:
+    name : personservice.log
+    max-size: 1MB
+  pattern:
+    console : "%d{yyyy-MM-dd HH:mm:ss} - %msg%n"
+    file : "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-1level %logger{36} - %msg%n"
+
+
