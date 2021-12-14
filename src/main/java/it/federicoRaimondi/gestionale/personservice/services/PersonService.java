@@ -9,6 +9,8 @@ import javax.transaction.Transactional;
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.google.gson.Gson;
+
 import it.federicoRaimondi.gestionale.personservice.daoServices.PersonDAO;
 import it.federicoRaimondi.gestionale.personservice.views.PersonView;
 
@@ -20,6 +22,22 @@ public class PersonService {
 
 	public PersonService(PersonDAO repository) {
 		this.repository = repository;
+	}
+
+	public String findByIdToJson(Long id) {
+		PersonView instance = repository.findByID(id);
+		if (instance == null) {
+			return null;
+		}
+		return new Gson().toJson(instance);
+	}
+
+	public String findByUserID(Long userID) {
+		if (userID == null) {
+			return null;
+		}
+		PersonView view = repository.findByUserID(userID);
+		return new Gson().toJson(view);
 	}
 
 	/**

@@ -1,15 +1,18 @@
 package it.federicoRaimondi.gestionale.personservice.services;
 
-import it.federicoRaimondi.gestionale.personservice.views.SupplierView;
-import it.federicoRaimondi.gestionale.personservice.daoServices.SupplierDAO;
+import java.lang.reflect.Field;
+import java.util.Arrays;
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.lang.reflect.Field;
-import java.util.Arrays;
-import java.util.List;
+import com.google.gson.Gson;
+
+import it.federicoRaimondi.gestionale.personservice.daoServices.SupplierDAO;
+import it.federicoRaimondi.gestionale.personservice.views.SupplierView;
 
 @Service
 @Transactional
@@ -21,66 +24,81 @@ public class SupplierService {
 		this.repository = repository;
 	}
 
+	public String findByIdToJson(Long id) {
+		SupplierView instance = repository.findByID(id);
+		if (instance == null) {
+			return null;
+		}
+		return new Gson().toJson(instance);
+	}
+
 	/**
 	 * Salvataggio di una risorsa SupplierView
-	 * @param instance l'oggetto SupplierView da salvate nel DB
-	 * @return l'ID dell'oggetto appena salvato, null altrimenti
+	 * 
+	 * @param  instance l'oggetto SupplierView da salvate nel DB
+	 * @return          l'ID dell'oggetto appena salvato, null altrimenti
 	 */
-	public Long store(SupplierView instance) {	
-		if(instance==null) return null;	
+	public Long store(SupplierView instance) {
+		if (instance == null)
+			return null;
 		Long id = repository.store(instance);
 		return id;
 	}
-	
+
 	/**
 	 * Aggiornamento di una risorsa SupplierView
-	 * @param instance l'oggetto SupplierView da rimpiazzare
-	 * @return true se l'aggiornamento ? andato a buol fine, false altrimenti
+	 * 
+	 * @param  instance l'oggetto SupplierView da rimpiazzare
+	 * @return          true se l'aggiornamento ? andato a buol fine, false altrimenti
 	 */
 	public Boolean update(SupplierView instance) {
-		if(instance.getID()==null) return false;
+		if (instance.getID() == null)
+			return false;
 		Boolean result = repository.update(instance);
 		return result;
 	}
-	
+
 	/**
 	 * Cancellazione di una risorsa SupplierView
-	 * @param instance l'oggetto SupplierView da rimpiazzare
-	 * @return true se l'aggiornamento ? andato a buol fine, false altrimenti
+	 * 
+	 * @param  instance l'oggetto SupplierView da rimpiazzare
+	 * @return          true se l'aggiornamento ? andato a buol fine, false altrimenti
 	 */
-	public Boolean delete(SupplierView instance) {		
+	public Boolean delete(SupplierView instance) {
 		Boolean result = repository.deleteInstance(instance);
 		return result;
 	}
-	
+
 	/**
 	 * Cancellazione di una risorsa SupplierView dato il suo ID
-	 * @param ID l'identificativo della risorsa
-	 * @return true se l'aggiornamento ? andato a buol fine, false altrimenti
+	 * 
+	 * @param  ID l'identificativo della risorsa
+	 * @return    true se l'aggiornamento ? andato a buol fine, false altrimenti
 	 */
-	public Boolean deleteByID(Long id) {		
-		if(id==null) return false;
+	public Boolean deleteByID(Long id) {
+		if (id == null)
+			return false;
 		Boolean result = repository.deleteByID(id);
 		return result;
 	}
-	
+
 	public SupplierView findByID(Long id) {
 		SupplierView instance = repository.findByID(id);
 		return instance;
 	}
-	
+
 	public List<SupplierView> findAll() {
 		return repository.findAll();
 	}
-	
-	
+
 	/*****************************************************************/
-	/***************************FRONT_END*****************************/
+	/*************************** FRONT_END *****************************/
 	/*****************************************************************/
 
 	public ModelAndView view(Long ID) {
 		SupplierView view = findByID(ID);
-		if (view == null)	return null;
+		if (view == null)
+			return null;
 
 		ModelAndView model = new ModelAndView();
 		model.setViewName("SupplierView");
@@ -97,7 +115,7 @@ public class SupplierService {
 		}
 		return model;
 	}
-	
+
 	public ModelAndView input() {
 		ModelAndView model = new ModelAndView();
 		model.setViewName("SupplierInput");

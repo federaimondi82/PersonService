@@ -27,14 +27,17 @@ public class PersonView {
 	@Size( min=3, max=255)
 	@Column(name="surname")
 	private String surname;
+	@Column(name="userID")
+	private Long userID;
 
 	public PersonView() {
 	}
-	public PersonView(Long ID,String name,String surname) {
+	public PersonView(Long ID,String name,String surname,Long userID) {
 		super();
 		this.ID = ID;
 		this.name = name;
 		this.surname = surname;
+		this.userID = userID;
 	}
 	
 	public void setID(Long ID) {
@@ -54,6 +57,12 @@ public class PersonView {
 	}
 	public String getSurname() {
 		return this.surname ;
+	}
+	public void setUserID(Long userID) {
+		this.userID = userID;
+	}
+	public Long getUserID() {
+		return this.userID ;
 	}
 
 	@Override

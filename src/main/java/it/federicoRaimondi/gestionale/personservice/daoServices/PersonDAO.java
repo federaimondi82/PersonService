@@ -16,6 +16,8 @@ public interface PersonDAO extends CrudRepository<PersonView, Long> {
 
 	static final Logger logger = Logger.getLogger(PersonDAO.class.getName());
 
+	public PersonView findByUserID(Long userID);
+
 	default PersonView findByID(Long id) {
 		try {
 			PersonView instance = findById(id).get();
