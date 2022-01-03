@@ -26,7 +26,7 @@ import it.federicoRaimondi.gestionale.personservice.services.StateService;
 import it.federicoRaimondi.gestionale.personservice.views.StateView;
 
 @RestController
-@RequestMapping("personservice/state")
+@RequestMapping("state")
 @Api(value = "PersonService", tags = "Controller per le chiamate su PersonService")
 public class StateController extends BaseController {
 

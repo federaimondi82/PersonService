@@ -9,9 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Embedded;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.Size;
+import com.google.gson.GsonBuilder;
 
-import org.apache.commons.lang.builder.ToStringBuilder;
 
 @Entity
 @Table(name = "phonenumber")
@@ -21,8 +20,7 @@ public class PhoneNumberView {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="ID")
 	private Long ID;
-	@Size( min=3, max=255)
-	@Column(name="number")
+	@Column(name="number",length=50)
 	private String number;
 	@Column(name="type")
 	private Integer type;
@@ -66,6 +64,6 @@ public class PhoneNumberView {
 
 	@Override
     public String toString() {
-        return ToStringBuilder.reflectionToString(this);
+        return new  GsonBuilder().setPrettyPrinting().create().toJson(this);
     }
 }

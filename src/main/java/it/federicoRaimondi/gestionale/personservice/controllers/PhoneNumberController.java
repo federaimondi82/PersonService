@@ -26,7 +26,7 @@ import it.federicoRaimondi.gestionale.personservice.services.PhoneNumberService;
 import it.federicoRaimondi.gestionale.personservice.views.PhoneNumberView;
 
 @RestController
-@RequestMapping("personservice/phonenumber")
+@RequestMapping("phonenumber")
 @Api(value = "PersonService", tags = "Controller per le chiamate su PersonService")
 public class PhoneNumberController extends BaseController {
 

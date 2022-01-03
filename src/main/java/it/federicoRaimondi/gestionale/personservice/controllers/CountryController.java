@@ -26,7 +26,7 @@ import it.federicoRaimondi.gestionale.personservice.services.CountryService;
 import it.federicoRaimondi.gestionale.personservice.views.CountryView;
 
 @RestController
-@RequestMapping("personservice/country")
+@RequestMapping("country")
 @Api(value = "PersonService", tags = "Controller per le chiamate su PersonService")
 public class CountryController extends BaseController {
 

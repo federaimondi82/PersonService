@@ -9,9 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Embedded;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.Size;
+import com.google.gson.GsonBuilder;
 
-import org.apache.commons.lang.builder.ToStringBuilder;
 
 @Entity
 @Table(name = "customer")
@@ -21,17 +20,13 @@ public class CustomerView {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="ID")
 	private Long ID;
-	@Size( min=3, max=255)
-	@Column(name="name")
+	@Column(name="name",length=50)
 	private String name;
-	@Size( min=3, max=255)
-	@Column(name="surname")
+	@Column(name="surname",length=50)
 	private String surname;
-	@Size( min=3, max=255)
-	@Column(name="partitaIva")
+	@Column(name="partitaIva",length=50)
 	private String partitaIva;
-	@Size( min=3, max=255)
-	@Column(name="ragioneSociale")
+	@Column(name="ragioneSociale",length=50)
 	private String ragioneSociale;
 
 	public CustomerView() {
@@ -78,6 +73,6 @@ public class CustomerView {
 
 	@Override
     public String toString() {
-        return ToStringBuilder.reflectionToString(this);
+        return new  GsonBuilder().setPrettyPrinting().create().toJson(this);
     }
 }

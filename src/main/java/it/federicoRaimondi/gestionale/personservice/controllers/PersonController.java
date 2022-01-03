@@ -25,7 +25,7 @@ import it.federicoRaimondi.gestionale.personservice.services.PersonService;
 import it.federicoRaimondi.gestionale.personservice.views.PersonView;
 
 @RestController
-@RequestMapping("personservice/person")
+@RequestMapping("person")
 @Api(value = "PersonService", tags = "Controller per le chiamate su PersonService")
 public class PersonController extends BaseController {
 
@@ -64,7 +64,7 @@ public class PersonController extends BaseController {
 		// Viene salvata l'instanca sul DB
 		Long ID = getService().store(instance);
 
-		return getResponse(ID, "Salvataggio InvoiceView terminato");
+		return getResponse(ID, "Salvataggio PersonView terminato");
 	}
 
 	/**
@@ -194,7 +194,7 @@ public class PersonController extends BaseController {
 
 	/**
 	 * <p>
-	 * gateway/invoiceservice/person/getPersonByID <br>
+	 * gateway/personservice/person/getPersonByID <br>
 	 * Restituzione di una risorsa in formato Json di Person
 	 * </p>
 	 */

@@ -26,7 +26,7 @@ import it.federicoRaimondi.gestionale.personservice.services.EmailAddressService
 import it.federicoRaimondi.gestionale.personservice.views.EmailAddressView;
 
 @RestController
-@RequestMapping("personservice/emailaddress")
+@RequestMapping("emailaddress")
 @Api(value = "PersonService", tags = "Controller per le chiamate su PersonService")
 public class EmailAddressController extends BaseController {
 

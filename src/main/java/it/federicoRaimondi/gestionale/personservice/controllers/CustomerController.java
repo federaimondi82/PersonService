@@ -26,7 +26,7 @@ import it.federicoRaimondi.gestionale.personservice.services.CustomerService;
 import it.federicoRaimondi.gestionale.personservice.views.CustomerView;
 
 @RestController
-@RequestMapping("personservice/customer")
+@RequestMapping("customer")
 @Api(value = "PersonService", tags = "Controller per le chiamate su PersonService")
 public class CustomerController extends BaseController {
 

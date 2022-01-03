@@ -45,7 +45,6 @@ feign:
         readTimeout: 300000
         
 ---
-# Eureka  
 eureka:
    client:
     registerWithEureka: true
@@ -53,7 +52,6 @@ eureka:
     serviceUrl:
      defaultZone: ${EUREKA_URL:http://localhost:5100/eureka/}
 
----
 #Actuator Parameters
 management:
   endpoint:

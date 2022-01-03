@@ -26,7 +26,7 @@ import it.federicoRaimondi.gestionale.personservice.services.SupplierService;
 import it.federicoRaimondi.gestionale.personservice.views.SupplierView;
 
 @RestController
-@RequestMapping("personservice/supplier")
+@RequestMapping("supplier")
 @Api(value = "PersonService", tags = "Controller per le chiamate su PersonService")
 public class SupplierController extends BaseController {
 
